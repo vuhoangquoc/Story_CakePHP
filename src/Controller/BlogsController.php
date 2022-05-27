@@ -18,8 +18,8 @@ class BlogsController extends AppController{
 
     //debug($articles);
 
-    $articleList = $this->Articles->find('list')->limit('80');
-    $this->set('articles', $this->paginate($articles, ['limit'=>'3']));
+    $articleList = $this->Articles->find('list')->limit('6');
+    $this->set('articles', $this->paginate($articles, ['limit'=>'8']));
 
 
     $this->set('articleList', $articleList);

@@ -4,13 +4,13 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="row">
-    <aside class="column">
+<div class="row container d-sm-flex justify-content-center">
+    <!-- <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside>
+    </aside> -->
     <div class="column-responsive column-80">
         <div class="users form content">
             <?= $this->Form->create($user, ['type'=>'file']) ?>
@@ -27,8 +27,9 @@
                     echo $this->Form->control('date_updated');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'),['class' => 'button btn btn-primary']) ?>
             <?= $this->Form->end() ?>
         </div>
+
     </div>
 </div>

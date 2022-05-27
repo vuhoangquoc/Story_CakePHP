@@ -50,7 +50,8 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        // $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        $builder->connect('/', ['controller' => 'Blogs', 'action' => 'home']);
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
          */
@@ -73,7 +74,8 @@ return static function (RouteBuilder $routes) {
     });
 
     $routes->prefix('Admin', function (RouteBuilder $routes) {
-        $routes->connect('/', ['controller' => 'users', 'action' => 'index']);
+        // $routes->connect('/', ['controller' => 'users', 'action' => 'index']);
+        $routes->connect('/', ['controller' => 'Admin', 'action' => 'index']);
         $routes->fallbacks(DashedRoute::class);
     });
 

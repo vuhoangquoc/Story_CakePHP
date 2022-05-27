@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+// use cake\Event\EventInterface;
 use App\Controller\Admin\AppController;
 
 /**
@@ -13,19 +14,34 @@ use App\Controller\Admin\AppController;
  */
 class UsersController extends AppController
 {
+
     public function login()
     {
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();
             
             if($user) {
+
                 $this->Auth->setUser($user);
+                
+                if($user['permission'] == 'user')
+                {
+                    $this->Flash->error("Bạn không có quyền đăng nhập!");
+                    return $this->redirect(['controller'=>'Users', 'action'=>'logout']);
+                }
+
                 return $this->redirect(['controller'=>'Users', 'action'=>'index']);
             } else {
                 $this->Flash->error("Incorrect username or password!");
             }
         }
     }
+
+    // public function beforeFilter(EventInterface $event)
+    // {        
+    //     $this->viewBuilder()->setLayout('admin');
+    // }
+
 
     public function logout() {
         return $this->redirect($this->Auth->logout());
@@ -137,4 +153,23 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+    public function userPermission($id = null, $permission)
+    {
+        $this->request->allowMethod(['post']);
+        $user = $this->Users->get($id);
+
+        if($permission == 'admin')
+            $user->permission = 'user';
+        else
+            $user->permission = 'admin';
+
+        if($this->Users->save($user))
+        {
+            $this->Flash->success(__('The user permission has changed.'));
+        }
+        return $this->redirect(['action' => 'index']);
+    }
+
 }

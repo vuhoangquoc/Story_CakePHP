@@ -33,6 +33,7 @@ class User extends Entity
         'email' => true,
         'username' => true,
         'password' => true,
+        'permission' => true,
         'date_created' => true,
         'date_updated' => true,
     ];

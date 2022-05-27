@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use Cake\Controller\Controller;
+use cake\Event\EventInterface;
+
 
 class AppController extends Controller
 {
@@ -27,4 +29,8 @@ class AppController extends Controller
          */
         //$this->loadComponent('FormProtection');
     }
+    // public function beforeFilter(EventInterface $event)
+    // {        
+    //     $this->viewBuilder()->setLayout('admin');
+    // }
 }
