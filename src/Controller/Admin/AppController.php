@@ -29,8 +29,8 @@ class AppController extends Controller
          */
         //$this->loadComponent('FormProtection');
     }
-    // public function beforeFilter(EventInterface $event)
-    // {        
-    //     $this->viewBuilder()->setLayout('admin');
-    // }
+    public function beforeFilter(EventInterface $event)
+    {        
+        $this->viewBuilder()->setLayout('admin');
+    }
 }

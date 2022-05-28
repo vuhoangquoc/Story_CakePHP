@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ArticlesTable;
+use App\Model\Table\CategoriesTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ArticlesTable Test Case
+ * App\Model\Table\CategoriesTable Test Case
  */
-class ArticlesTableTest extends TestCase
+class CategoriesTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ArticlesTable
+     * @var \App\Model\Table\CategoriesTable
      */
-    protected $Articles;
+    protected $Categories;
 
     /**
      * Fixtures
@@ -24,9 +24,8 @@ class ArticlesTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.Articles',
         'app.Categories',
-        'app.Chapters',
+        'app.Articles',
     ];
 
     /**
@@ -37,8 +36,8 @@ class ArticlesTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Articles') ? [] : ['className' => ArticlesTable::class];
-        $this->Articles = $this->getTableLocator()->get('Articles', $config);
+        $config = $this->getTableLocator()->exists('Categories') ? [] : ['className' => CategoriesTable::class];
+        $this->Categories = $this->getTableLocator()->get('Categories', $config);
     }
 
     /**
@@ -48,7 +47,7 @@ class ArticlesTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->Articles);
+        unset($this->Categories);
 
         parent::tearDown();
     }
@@ -57,20 +56,9 @@ class ArticlesTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\ArticlesTable::validationDefault()
+     * @uses \App\Model\Table\CategoriesTable::validationDefault()
      */
     public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     * @uses \App\Model\Table\ArticlesTable::buildRules()
-     */
-    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

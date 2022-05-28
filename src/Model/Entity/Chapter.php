@@ -6,20 +6,19 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Article Entity
+ * Chapter Entity
  *
  * @property int $id
- * @property string $title
- * @property string $details
- * @property int $category_id
- * @property string $image
- * @property \Cake\I18n\FrozenTime $craeted
+ * @property int $article_id
+ * @property string $chap
+ * @property string $recap
+ * @property string $contentimage
+ * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\Category $category
- * @property \App\Model\Entity\Chapter[] $chapters
+ * @property \App\Model\Entity\Article $article
  */
-class Article extends Entity
+class Chapter extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -31,13 +30,12 @@ class Article extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'title' => true,
-        'details' => true,
-        'category_id' => true,
-        'image' => true,
-        'craeted' => true,
+        'article_id' => true,
+        'chap' => true,
+        'recap' => true,
+        'contentimage' => true,
+        'created' => true,
         'modified' => true,
-        'category' => true,
-        'chapters' => true,
+        'article' => true,
     ];
 }

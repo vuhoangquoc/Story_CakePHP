@@ -21,9 +21,11 @@ class ArticlesFixture extends TestFixture
             [
                 'id' => 1,
                 'title' => 'Lorem ipsum dolor sit amet',
-                'details' => 'Lorem ipsum dolor sit amet',
-                'craeted' => '2022-05-22',
-                'modified' => '2022-05-22',
+                'details' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+                'category_id' => 1,
+                'image' => 'Lorem ipsum dolor sit amet',
+                'craeted' => '2022-05-28 14:41:06',
+                'modified' => '2022-05-28 14:41:06',
             ],
         ];
         parent::init();

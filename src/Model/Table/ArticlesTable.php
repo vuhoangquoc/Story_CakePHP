@@ -11,6 +11,9 @@ use Cake\Validation\Validator;
 /**
  * Articles Model
  *
+ * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsTo $Categories
+ * @property \App\Model\Table\ChaptersTable&\Cake\ORM\Association\HasMany $Chapters
+ *
  * @method \App\Model\Entity\Article newEmptyEntity()
  * @method \App\Model\Entity\Article newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Article[] newEntities(array $data, array $options = [])
@@ -44,6 +47,14 @@ class ArticlesTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsTo('Categories', [
+            'foreignKey' => 'category_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->hasMany('Chapters', [
+            'foreignKey' => 'article_id',
+        ]);
     }
 
     /**
@@ -62,15 +73,39 @@ class ArticlesTable extends Table
 
         $validator
             ->scalar('details')
-            ->maxLength('details', 255)
             ->requirePresence('details', 'create')
             ->notEmptyString('details');
 
         $validator
-            ->date('craeted')
+            ->integer('category_id')
+            ->requirePresence('category_id', 'create')
+            ->notEmptyString('category_id');
+
+        $validator
+            ->scalar('image')
+            ->maxLength('image', 255)
+            ->requirePresence('image', 'create')
+            ->notEmptyFile('image');
+
+        $validator
+            ->dateTime('craeted')
             ->requirePresence('craeted', 'create')
-            ->notEmptyDate('craeted');
+            ->notEmptyDateTime('craeted');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('category_id', 'Categories'), ['errorField' => 'category_id']);
+
+        return $rules;
     }
 }

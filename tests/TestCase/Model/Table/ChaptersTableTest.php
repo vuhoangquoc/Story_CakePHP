@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\ArticlesTable;
+use App\Model\Table\ChaptersTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\ArticlesTable Test Case
+ * App\Model\Table\ChaptersTable Test Case
  */
-class ArticlesTableTest extends TestCase
+class ChaptersTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\ArticlesTable
+     * @var \App\Model\Table\ChaptersTable
      */
-    protected $Articles;
+    protected $Chapters;
 
     /**
      * Fixtures
@@ -24,9 +24,8 @@ class ArticlesTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.Articles',
-        'app.Categories',
         'app.Chapters',
+        'app.Articles',
     ];
 
     /**
@@ -37,8 +36,8 @@ class ArticlesTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Articles') ? [] : ['className' => ArticlesTable::class];
-        $this->Articles = $this->getTableLocator()->get('Articles', $config);
+        $config = $this->getTableLocator()->exists('Chapters') ? [] : ['className' => ChaptersTable::class];
+        $this->Chapters = $this->getTableLocator()->get('Chapters', $config);
     }
 
     /**
@@ -48,7 +47,7 @@ class ArticlesTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->Articles);
+        unset($this->Chapters);
 
         parent::tearDown();
     }
@@ -57,7 +56,7 @@ class ArticlesTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\ArticlesTable::validationDefault()
+     * @uses \App\Model\Table\ChaptersTable::validationDefault()
      */
     public function testValidationDefault(): void
     {
@@ -68,7 +67,7 @@ class ArticlesTableTest extends TestCase
      * Test buildRules method
      *
      * @return void
-     * @uses \App\Model\Table\ArticlesTable::buildRules()
+     * @uses \App\Model\Table\ChaptersTable::buildRules()
      */
     public function testBuildRules(): void
     {

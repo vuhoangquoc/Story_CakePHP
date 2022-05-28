@@ -23,9 +23,9 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Quản lý truyện</h6>
-                <a class="collapse-item" href="#">1</a>
-                <a class="collapse-item" href="#">2</a>
-                <a class="collapse-item" href="#">3</a>
+                <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'categories', 'action' => 'index']); ?>">Danh mục</a>
+                <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'articles', 'action' => 'index']); ?>">Truyện</a>
+                <a class="collapse-item" href="<?= $this->Url->build(['controller' => 'chapters', 'action' => 'index']); ?>">Chương</a>
                 <!-- <a class="collapse-item" href="utilities-other.html">Other</a> -->
             </div>
         </div>
