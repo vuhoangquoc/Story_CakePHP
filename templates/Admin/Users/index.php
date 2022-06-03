@@ -25,7 +25,7 @@
 
                     <th scope="col"><?= $this->Paginator->sort('Quyền') ?></th>
 
-                    <!-- <th scope="col"><?= $this->Paginator->sort('image') ?></th> -->
+                    <th scope="col"><?= $this->Paginator->sort('image') ?></th>
 
                     <th scope="col"><?= $this->Paginator->sort('date_created') ?></th>
                     <th scope="col"><?= $this->Paginator->sort('date_updated') ?></th>
@@ -48,7 +48,7 @@
                         <?php endif; ?>
                     </td>
 
-                    <!-- <td><?= @$this->Html->image($user->image) ?></td> -->
+                    <td style="width:50px"><?= @$this->Html->image($user->image) ?></td>
 
                     <td><?= h($user->date_created) ?></td>
                     <td><?= h($user->date_updated) ?></td>

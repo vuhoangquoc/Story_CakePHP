@@ -72,18 +72,36 @@ class ChaptersTable extends Table
             ->requirePresence('chap', 'create')
             ->notEmptyString('chap');
 
-        $validator
-            ->scalar('recap')
-            ->maxLength('recap', 16777215)
-            ->requirePresence('recap', 'create')
-            ->notEmptyString('recap');
+        // $validator
+        //     ->scalar('recap')
+        //     ->maxLength('recap', 16777215)
+        //     ->requirePresence('recap', 'create')
+        //     ->notEmptyString('recap');
 
         $validator
-            ->scalar('contentimage')
-            ->maxLength('contentimage', 255)
-            ->requirePresence('contentimage', 'create')
-            ->notEmptyFile('contentimage');
+            ->scalar('image')
+            ->maxLength('image', 255)
+            ->requirePresence('image', 'create')
+            ->notEmptyFile('image');
 
+
+
+        // ảnh
+        $validator
+            ->allowEmptyFile('image')
+            ->add( 'image', [
+            'mimeType' => [
+                'rule' => [ 'mimeType', [ 'image/jpg', 'image/png', 'image/jpeg' ] ],
+                'message' => 'Please upload only jpg and png.',
+            ],
+            'fileSize' => [
+                'rule' => [ 'fileSize', '<=', '1MB' ],
+                'message' => 'Image file size must be less than 1MB.',
+                // 'last' => true
+            ],
+        ] );
+
+        
         return $validator;
     }
 

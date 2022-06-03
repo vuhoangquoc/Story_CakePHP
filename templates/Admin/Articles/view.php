@@ -28,7 +28,8 @@
                 </tr>
                 <tr>
                     <th><?= __('Image') ?></th>
-                    <td><?= h($article->image) ?></td>
+                    <!-- <td><?= h($article->image) ?></td> -->
+                    <td><?= @$this->Html->image($article->image, ['style' => 'max-width:50px;height:50px']) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>

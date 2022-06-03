@@ -24,6 +24,11 @@
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
 
+
+use Cake\Http\Middleware\CsrfProtectionMiddleware;
+
+
+
 return static function (RouteBuilder $routes) {
     /*
      * The default class to use for all routes

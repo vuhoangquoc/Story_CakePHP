@@ -27,8 +27,9 @@
                     <td><?= h($chapter->chap) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Contentimage') ?></th>
-                    <td><?= h($chapter->contentimage) ?></td>
+                    <th><?= __('Image') ?></th>
+                    <!-- <td><?= h($chapter->image) ?></td> -->
+                    <td><?= @$this->Html->image($chapter->image, ['style' => 'max-width:50px;height:50px']) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>

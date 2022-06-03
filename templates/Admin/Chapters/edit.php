@@ -19,14 +19,14 @@
     </aside>
     <div class="column-responsive column-80">
         <div class="chapters form content">
-            <?= $this->Form->create($chapter) ?>
+            <?= $this->Form->create($chapter, ['type'=>'file']) ?>
             <fieldset>
                 <legend><?= __('Edit Chapter') ?></legend>
                 <?php
                     echo $this->Form->control('article_id', ['options' => $articles]);
                     echo $this->Form->control('chap');
-                    echo $this->Form->control('recap');
-                    echo $this->Form->control('contentimage');
+                    // echo $this->Form->control('recap');
+                    echo $this->Form->control('change_image', ['type'=>'file']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

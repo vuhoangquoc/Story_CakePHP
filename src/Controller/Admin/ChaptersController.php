@@ -3,7 +3,13 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 use cake\Event\EventInterface;
-use App\Controller\AppController;
+// use App\Controller\AppController;
+use App\Controller\Admin\AppController;
+
+
+
+use Cake\View\Helper\FormHelper;
+
 
 /**
  * Chapters Controller
@@ -56,8 +62,60 @@ class ChaptersController extends AppController
     public function add()
     {
         $chapter = $this->Chapters->newEmptyEntity();
+
+
+
+
+        // if(isset($this->request->data['image'])){
+        //     $file_name_all="";
+        //     for($i=0; $i<count($this->request->data['image']); $i++){
+        //         if(!empty($this->request->data['image'][$i]['name'])){
+        //             $file = $this->request->data['image'][$i];
+        //             $file['name'] =  time() . '-' . str_replace(' ', '_', $file['name']); 
+        //             $uploadPath = WWW_ROOT . 'img'.DS.'chapter-img';
+        //             $fileName =  $file['name'];
+        //             $uploadFile = $uploadPath.$fileName;
+        //             $file_name_all = $file['name'].",";
+        //             if($file['name']){
+        //                 move_uploaded_file($file['tmp_name'], $uploadFile);
+        //             }  
+        //         }
+        //     }
+        // }
+
+
+
         if ($this->request->is('post')) {
             $chapter = $this->Chapters->patchEntity($chapter, $this->request->getData());
+
+
+            if (!$chapter->getErrors) {
+                $image = $this->request->getData('image');
+
+                $name = $image->getClientFilename();
+
+                if (!is_dir(WWW_ROOT.'img'.DS.'chapter-img'))
+                mkdir(WWW_ROOT.'img'.DS.'chapter-img',0775);
+
+                $targetPath = WWW_ROOT.'img'.DS.'chapter-img'.DS.$name;
+
+                if ($name)
+                $image->moveTo($targetPath);
+
+                $chapter->image = 'chapter-img/'.$name;
+            }
+            
+            // // Check user đã submit chưa
+            // if($this->request->is('post')) {
+
+            //     $this->Image->create();
+            //     // nếu lưu thành công sẽ quay về list
+            //     if($this->Image->saveMany($this->request->data['Image'])) {
+            //         $this->Session->setFlash(__('Đã upload thành công.'));
+            //         return $this->redirect(array('action' => 'index'));
+            //     }
+            // }
+
             if ($this->Chapters->save($chapter)) {
                 $this->Flash->success(__('The chapter has been saved.'));
 
@@ -68,7 +126,6 @@ class ChaptersController extends AppController
         $articles = $this->Chapters->Articles->find('list', ['limit' => 200])->all();
         $this->set(compact('chapter', 'articles'));
     }
-
     /**
      * Edit method
      *
@@ -83,6 +140,23 @@ class ChaptersController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $chapter = $this->Chapters->patchEntity($chapter, $this->request->getData());
+
+            if (!$chapter->getErrors) {
+                $image = $this->request->getData('change_image');
+
+                $name = $image->getClientFilename();
+
+                if (!is_dir(WWW_ROOT.'img'.DS.'chapter-img'))
+                mkdir(WWW_ROOT.'img'.DS.'chapter-img',0775);
+
+                $targetPath = WWW_ROOT.'img'.DS.'chapter-img'.DS.$name;
+
+                if ($name)
+                $image->moveTo($targetPath);
+
+                $chapter->image = 'chapter-img/'.$name;
+            }
+
             if ($this->Chapters->save($chapter)) {
                 $this->Flash->success(__('The chapter has been saved.'));
 

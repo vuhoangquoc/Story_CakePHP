@@ -14,14 +14,23 @@
     </aside>
     <div class="column-responsive column-80">
         <div class="chapters form content">
-            <?= $this->Form->create($chapter) ?>
+            <?= $this->Form->create($chapter, ['type'=>'file']) ?>
             <fieldset>
                 <legend><?= __('Add Chapter') ?></legend>
                 <?php
                     echo $this->Form->control('article_id', ['options' => $articles]);
                     echo $this->Form->control('chap');
-                    echo $this->Form->control('recap');
-                    echo $this->Form->control('contentimage');
+                    // echo $this->Form->control('recap');
+                    echo $this->Form->control('image', ['type'=>'file', 'multiple' => 'multiple']);
+                    // echo $this->Form->control('image', [
+                    //     'type' => 'file',
+                    //     // 'label' => __('Choose PDF Files'),
+                    //     // 'accept' => 'application/pdf',
+                    //     'multiple' => 'multiple',
+                    //     //'name' => 'documents[]',
+                    // ]);
+                    // echo $this->Form->input('Image.1.image', array('type' => 'file'));
+                    // echo $this->Form->input('Image.2.image', array('type' => 'file'));                
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -32,8 +32,8 @@ class Chapter extends Entity
     protected $_accessible = [
         'article_id' => true,
         'chap' => true,
-        'recap' => true,
-        'contentimage' => true,
+        // 'recap' => true,
+        'image' => true,
         'created' => true,
         'modified' => true,
         'article' => true,

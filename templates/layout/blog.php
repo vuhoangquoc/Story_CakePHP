@@ -18,11 +18,19 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/css/style.css" rel="stylesheet">
+
+    <link href="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/css/doc.css" rel="stylesheet">
 </head>
 
 <body>
     
+    <?= $this->element('nav_top'); ?>
+
+    <?= $this->element('nav_left'); ?>
+
     <?= $this->element('nav'); ?>
+
+    <?= $this->element('slide'); ?>
 
     <?= $this->fetch('content'); ?>
 

@@ -20,19 +20,9 @@
     
     <link href="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/css/cake.css" rel="stylesheet">
     
-    
-
-    <!-- <style>
-        html {
-            margin-top: 0;
-            font-size: 16px;
-        }
-    </style> -->
-
 </head>
 
 <body id="page-top">
-
     <div id="wrapper">
         <?= $this->element('Admin/sidebar'); ?>
         <div id="content-wrapper" class="d-flex flex-column">
@@ -55,7 +45,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">You really want to sign out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

@@ -6,7 +6,8 @@
 ?>
 <div class="categories index content">
     <?= $this->Html->link(__('New Category'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Categories') ?></h3>
+    <!-- <h3><?= __('Categories') ?></h3> -->
+    <h3 style="text-align:center"><?= __('Quản lý thể loại') ?></h3>
     <div class="table-responsive">
         <table>
             <thead>

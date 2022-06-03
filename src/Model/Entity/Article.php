@@ -38,6 +38,7 @@ class Article extends Entity
         'craeted' => true,
         'modified' => true,
         'category' => true,
+        // 'categories' => true,
         'chapters' => true,
     ];
 }

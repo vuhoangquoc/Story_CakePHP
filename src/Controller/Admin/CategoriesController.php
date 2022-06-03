@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 use cake\Event\EventInterface;
-use App\Controller\AppController;
+// use App\Controller\AppController;
+use App\Controller\Admin\AppController;
+
 
 /**
  * Categories Controller

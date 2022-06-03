@@ -2,8 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controller\Admin;
-
-use App\Controller\AppController;
+use cake\Event\EventInterface;
+// use App\Controller\AppController;
+use App\Controller\Admin\AppController;
 
 /**
  * Articles Controller
@@ -13,6 +14,11 @@ use App\Controller\AppController;
  */
 class ArticlesController extends AppController
 {
+    // public function beforeFilter(EventInterface $event)
+    // {        
+    //     $this->viewBuilder()->setLayout('admin');
+    // }
+    
     /**
      * Index method
      *
@@ -54,6 +60,23 @@ class ArticlesController extends AppController
         $article = $this->Articles->newEmptyEntity();
         if ($this->request->is('post')) {
             $article = $this->Articles->patchEntity($article, $this->request->getData());
+            
+            if (!$article->getErrors) {
+                $image = $this->request->getData('image');
+
+                $name = $image->getClientFilename();
+
+                if (!is_dir(WWW_ROOT.'img'.DS.'article-img'))
+                mkdir(WWW_ROOT.'img'.DS.'article-img',0775);
+
+                $targetPath = WWW_ROOT.'img'.DS.'article-img'.DS.$name;
+
+                if ($name)
+                $image->moveTo($targetPath);
+
+                $article->image = 'article-img/'.$name;
+            }
+
             if ($this->Articles->save($article)) {
                 $this->Flash->success(__('The article has been saved.'));
 
@@ -79,6 +102,23 @@ class ArticlesController extends AppController
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $article = $this->Articles->patchEntity($article, $this->request->getData());
+
+            if (!$article->getErrors) {
+                $image = $this->request->getData('change_image');
+
+                $name = $image->getClientFilename();
+
+                if (!is_dir(WWW_ROOT.'img'.DS.'article-img'))
+                mkdir(WWW_ROOT.'img'.DS.'article-img',0775);
+
+                $targetPath = WWW_ROOT.'img'.DS.'article-img'.DS.$name;
+
+                if ($name)
+                $image->moveTo($targetPath);
+
+                $article->image = 'article-img/'.$name;
+            }
+
             if ($this->Articles->save($article)) {
                 $this->Flash->success(__('The article has been saved.'));
 

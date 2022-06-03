@@ -17,12 +17,21 @@ class BlogsController extends AppController{
                       ->order(['Articles.id DESC']);
 
     //debug($articles);
-
-    $articleList = $this->Articles->find('list')->limit('6');
     $this->set('articles', $this->paginate($articles, ['limit'=>'8']));
-
-
+    
+    
+    $articleList = $this->Articles->find('list')->limit('5');
     $this->set('articleList', $articleList);
+
+
+
+    $this->loadModel('Slides');
+    $slides = $this->Slides->find('all')
+                      ->order(['Slides.id DESC'])
+                      ->limit(3);
+    $this->set('slides', $slides);
+
+    
   }
 
   public function about() {

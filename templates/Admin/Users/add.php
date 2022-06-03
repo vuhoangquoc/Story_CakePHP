@@ -5,12 +5,12 @@
  */
 ?>
 <div class="row container d-sm-flex justify-content-center">
-    <!-- <aside class="column">
+    <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
             <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside> -->
+    </aside>
     <div class="column-responsive column-80">
         <div class="users form content">
             <?= $this->Form->create($user, ['type'=>'file']) ?>

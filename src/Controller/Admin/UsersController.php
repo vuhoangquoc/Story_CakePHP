@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
-// use cake\Event\EventInterface;
+use cake\Event\EventInterface;
 use App\Controller\Admin\AppController;
 
 /**
@@ -15,6 +15,11 @@ use App\Controller\Admin\AppController;
 class UsersController extends AppController
 {
 
+    // public function beforeFilter(EventInterface $event)
+    // {        
+    //     $this->viewBuilder()->setLayout('admin');
+    // }
+
     public function login()
     {
         if ($this->request->is('post')) {
@@ -23,6 +28,7 @@ class UsersController extends AppController
             if($user) {
 
                 $this->Auth->setUser($user);
+                // return $this->redirect(['controller'=>'Admin', 'action'=>'index']);
                 
                 if($user['permission'] == 'user')
                 {
@@ -30,7 +36,8 @@ class UsersController extends AppController
                     return $this->redirect(['controller'=>'Users', 'action'=>'logout']);
                 }
 
-                return $this->redirect(['controller'=>'Users', 'action'=>'index']);
+                // return $this->redirect(['controller'=>'Users', 'action'=>'index']);
+                return $this->redirect(['controller'=>'Admin', 'action'=>'index']);
             } else {
                 $this->Flash->error("Incorrect username or password!");
             }
