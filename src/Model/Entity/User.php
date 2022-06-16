@@ -34,8 +34,8 @@ class User extends Entity
         'username' => true,
         'password' => true,
         'permission' => true,
-        'date_created' => true,
-        'date_updated' => true,
+        // 'date_created' => true,
+        // 'date_updated' => true,
     ];
 
     /**

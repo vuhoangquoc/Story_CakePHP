@@ -3,7 +3,7 @@
 					<div class="carousel-inner">
 						<?php foreach($slides as $key => $slides): ?>
 						<div class="carousel-item active" style="height: 410px;">
-								<img class="img-fluid" src="webroot/img/<?= $slides->image ?>" alt="Image">
+								<img class="img-fluid" src="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/img/<?= $slides->image ?>" alt="Image">
 							
 								<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
 										<div class="p-3" style="max-width: 700px;">

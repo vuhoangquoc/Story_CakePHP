@@ -85,15 +85,15 @@ class UsersTable extends Table
             ],
         ] );
 
-        $validator
-            ->dateTime('date_created')
-            ->requirePresence('date_created', 'create')
-            ->notEmptyDateTime('date_created');
+        // $validator
+        //     ->dateTime('date_created')
+        //     ->requirePresence('date_created', 'create')
+        //     ->notEmptyDateTime('date_created');
 
-        $validator
-            ->dateTime('date_updated')
-            ->requirePresence('date_updated', 'create')
-            ->notEmptyDateTime('date_updated');
+        // $validator
+        //     ->dateTime('date_updated')
+        //     ->requirePresence('date_updated', 'create')
+        //     ->notEmptyDateTime('date_updated');
 
         return $validator;
     }

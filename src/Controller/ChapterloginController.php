@@ -7,12 +7,12 @@ use cake\Event\EventInterface;
 use Cake\Utility\Text;
 use Cake\Http\Client;
 
-class ChapterController extends AppController
+class ChapterloginController extends AppController
 {
 
     public function beforeFilter(EventInterface $event)
     {
-        $this->viewBuilder()->setLayout('chapter');
+        $this->viewBuilder()->setLayout('chapterlogin');
     }
     public function index($id = null)
     {

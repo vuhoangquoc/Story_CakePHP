@@ -63,28 +63,6 @@ class ChaptersController extends AppController
     {
         $chapter = $this->Chapters->newEmptyEntity();
 
-
-
-
-        // if(isset($this->request->data['image'])){
-        //     $file_name_all="";
-        //     for($i=0; $i<count($this->request->data['image']); $i++){
-        //         if(!empty($this->request->data['image'][$i]['name'])){
-        //             $file = $this->request->data['image'][$i];
-        //             $file['name'] =  time() . '-' . str_replace(' ', '_', $file['name']); 
-        //             $uploadPath = WWW_ROOT . 'img'.DS.'chapter-img';
-        //             $fileName =  $file['name'];
-        //             $uploadFile = $uploadPath.$fileName;
-        //             $file_name_all = $file['name'].",";
-        //             if($file['name']){
-        //                 move_uploaded_file($file['tmp_name'], $uploadFile);
-        //             }  
-        //         }
-        //     }
-        // }
-
-
-
         if ($this->request->is('post')) {
             $chapter = $this->Chapters->patchEntity($chapter, $this->request->getData());
 
@@ -104,17 +82,6 @@ class ChaptersController extends AppController
 
                 $chapter->image = 'chapter-img/'.$name;
             }
-            
-            // // Check user đã submit chưa
-            // if($this->request->is('post')) {
-
-            //     $this->Image->create();
-            //     // nếu lưu thành công sẽ quay về list
-            //     if($this->Image->saveMany($this->request->data['Image'])) {
-            //         $this->Session->setFlash(__('Đã upload thành công.'));
-            //         return $this->redirect(array('action' => 'index'));
-            //     }
-            // }
 
             if ($this->Chapters->save($chapter)) {
                 $this->Flash->success(__('The chapter has been saved.'));

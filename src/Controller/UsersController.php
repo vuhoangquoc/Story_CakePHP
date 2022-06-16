@@ -3,13 +3,21 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Controller\ApploginController;
+use cake\Event\EventInterface;
+
 /**
  * Users Controller
  *
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class UsersController extends AppController
+class UsersController extends ApploginController
 {
+    public function beforeFilter(EventInterface  $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow('register');
+    }
     /**
      * Index method
      *
@@ -99,5 +107,68 @@ class UsersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+
+
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            
+            if($user) {
+
+                $this->Auth->setUser($user);
+                // return $this->redirect(['controller'=>'Admin', 'action'=>'index']);
+                
+                if($user['permission'] == 'admin')
+                {
+                    $this->Flash->error("Bạn không có quyền đăng nhập!");
+                    return $this->redirect(['controller'=>'Users', 'action'=>'logout']);
+                }
+
+                // return $this->redirect(['controller'=>'Users', 'action'=>'index']);
+                return $this->redirect(['controller'=>'Blogslogin', 'action'=>'home']);
+            } else {
+                $this->Flash->error("Incorrect username or password!");
+            }
+        }
+    }
+
+    public function logout() {
+        return $this->redirect($this->Auth->logout());
+        return $this->redirect(['controller'=>'Blogs', 'action'=>'home']);
+    }
+
+    public function register()
+    {
+        $user = $this->Users->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            
+            // ảnh
+            if(!$user->getErrors){
+                $image = $this->request->getData('image_file');
+    
+                $name = $image->getClientFilename();
+    
+                // tạo thư mục chứa ảnh
+                if(!is_dir(WWW_ROOT.'img'.DS.'user-img'))
+                mkdir(WWW_ROOT.'img'.DS.'user-img', 0775);
+
+                $targetPath = WWW_ROOT.'img'.DS.'user-img'.DS.$name;
+                if($name)
+                $image->moveTo($targetPath);
+                $user->image = 'user-img/'.$name;
+            }
+
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+
+                return $this->redirect(['action' => 'login']);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+        $this->set(compact('user'));
     }
 }

@@ -15,11 +15,6 @@ use App\Controller\Admin\AppController;
 class UsersController extends AppController
 {
 
-    // public function beforeFilter(EventInterface $event)
-    // {        
-    //     $this->viewBuilder()->setLayout('admin');
-    // }
-
     public function login()
     {
         if ($this->request->is('post')) {
@@ -28,22 +23,19 @@ class UsersController extends AppController
             if($user) {
 
                 $this->Auth->setUser($user);
-                // return $this->redirect(['controller'=>'Admin', 'action'=>'index']);
                 
                 if($user['permission'] == 'user')
                 {
                     $this->Flash->error("Bạn không có quyền đăng nhập!");
                     return $this->redirect(['controller'=>'Users', 'action'=>'logout']);
                 }
-
-                // return $this->redirect(['controller'=>'Users', 'action'=>'index']);
                 return $this->redirect(['controller'=>'Admin', 'action'=>'index']);
             } else {
                 $this->Flash->error("Incorrect username or password!");
             }
         }
     }
-
+ 
     // public function beforeFilter(EventInterface $event)
     // {        
     //     $this->viewBuilder()->setLayout('admin');

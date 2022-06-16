@@ -31,17 +31,11 @@
 	    <div class="row border-top px-xl-5">
             <div class="col-lg-9">
                
-                <?= $this->element('nav'); ?>
+                <?= $this->element('navlogin'); ?>
             </div>
         </div>
     </div>
-    <!-- <div class="chuyenchap">
-        <div class="" style="position:fixed;">
-            <?php foreach ($chapters as $chapters) : ?>
-                <a class="btn btn-primary" href="<?= $this->Url->build(['controller'=>'Chapter', 'action'=>'index', $chapters->id]) ?>"><?= $chapters->chap ?></a> 
-            <?php endforeach; ?>
-        </div>
-    </div> -->
+    
     <?= $this->fetch('content'); ?>
 
     <?= $this->element('footer'); ?>

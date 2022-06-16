@@ -3,14 +3,13 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
 use Cake\Event\EventInterface;
 use Cake\Utility\Text;
 use Cake\Http\Client;
 
-class BlogsController extends AppController{
+class BlogsloginController extends AppController{
   public function beforeFilter(EventInterface $event){
-    $this->viewBuilder()->setLayout('blog');
+    $this->viewBuilder()->setLayout('bloglogin');
     // debug($event);
     // exit;
   }
@@ -36,7 +35,6 @@ class BlogsController extends AppController{
                       ->limit(3);
     $this->set('slides', $slides);
 
-    
   }
 
   public function about() {

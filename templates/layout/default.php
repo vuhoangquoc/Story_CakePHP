@@ -38,15 +38,20 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
-            <!-- <a href="<?= $this->Url->build('/') ?>"><span>Home</span></a> -->
-            <a href="<?= $this->Url->build('/admin') ?>"><span>Admin</span></a>
+            <a href="<?= $this->Url->build('/') ?>">S<span>tories</span></a>
+            
         </div>
         <div class="top-nav-links">
+            <?php if($permission == 'admin'): ?>
+                <a href="<?= $this->Url->build('/admin') ?>"><span>Admin</span></a>
+            <?php endif ?>
             <!-- <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
             <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a> -->
             <!-- <?php if($username): ?>
                 <?= $this->Html->link("Logout",['controller'=>'Users','action'=>'logout']) ?>
             <?php endif ?> -->
+            <?= $this->Html->link("Login",['controller'=>'Users','action'=>'login']) ?>
+            <?= $this->Html->link("Register",['controller'=>'Users','action'=>'register']) ?>
         </div>
     </nav>
     <main class="main">

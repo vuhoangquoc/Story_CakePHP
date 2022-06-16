@@ -29,7 +29,8 @@
     <div class="container-fluid mb-5">
 	    <div class="row border-top px-xl-5">
             <div class="col-lg-9">
-                <?= $this->element('nav_home'); ?>
+                
+                <?= $this->element('nav'); ?>
             </div>
         </div>
     </div>

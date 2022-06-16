@@ -1,18 +1,7 @@
 
 <!-- ĐỌC -->
 <div class="doc" style="display: flex; align-items: center; justify-content: center;">
-    <!-- <div class="back">
-		<?php foreach($articles as $key => $articles): ?>
-            <a href="<?= $this->Url->build(['controller'=>'article', 'action'=>'index', $articles->id]) ?>">Back</a>
-		<?php endforeach; ?>
-    </div> -->
-    <!-- <div class="chuyenchap">
-        <div class="" style="position:fixed;">
-            <?php foreach ($chapters as $chapter) : ?>
-                <a class="btn btn-primary" href="<?= $this->Url->build(['controller'=>'Chapter', 'action'=>'index', $chapter->id]) ?>"><?= $chapter->chap ?></a> 
-            <?php endforeach; ?>
-        </div>
-    </div> -->
+    
     <div class="chapp" id="flipbook" >
             <!-- <img src="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/img/<?= $article->image ?>"> -->
         <!-- <div class="doc_doc"> -->

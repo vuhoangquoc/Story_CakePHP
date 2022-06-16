@@ -27,8 +27,10 @@
                     <td><?= $this->Number->format($chapter->id) ?></td>
                     <td><?= $chapter->has('article') ? $this->Html->link($chapter->article->title, ['controller' => 'Articles', 'action' => 'view', $chapter->article->id]) : '' ?></td>
                     <td><?= h($chapter->chap) ?></td>
+
                     <!-- <td><?= h($chapter->image) ?></td> -->
                     <td style="width:50px"><?= @$this->Html->image($chapter->image) ?></td>
+                    
                     <td><?= h($chapter->created) ?></td>
                     <td><?= h($chapter->modified) ?></td>
                     <td class="actions">

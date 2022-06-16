@@ -9,22 +9,22 @@
 						</button>
 						<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 								<div class="navbar-nav mr-auto py-0">
-										<a href="<?= $this->Url->build(['controller'=>'blogs', 'action'=>'home']) ?>" class="nav-item nav-link active">Home</a>
+										<a href="<?= $this->Url->build(['controller'=>'blogslogin', 'action'=>'home']) ?>" class="nav-item nav-link active">Home</a>
 										<div class="nav-item dropdown">
 											<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Thể loại</a>
 											<div class="dropdown-menu rounded-0 m-0">
-												<a href="<?= $this->Url->build(['controller' => 'category', 'action' => 'index', 1]); ?>" class="dropdown-item">Trẻ em</a>
-												<a href="<?= $this->Url->build(['controller' => 'category', 'action' => 'index', 2]); ?>" class="dropdown-item">Hành động</a>
-												<a href="<?= $this->Url->build(['controller' => 'category', 'action' => 'index', 3]); ?>" class="dropdown-item">Viễn tưởng</a>
-												<a href="<?= $this->Url->build(['controller' => 'category', 'action' => 'index', 4]); ?>" class="dropdown-item">Trinh thám</a>
+                        <!-- nhớ sửa nè -->
+												<a href="<?= $this->Url->build(['controller' => 'categorylogin', 'action' => 'index', 1]); ?>" class="dropdown-item">Trẻ em</a>
+												<a href="<?= $this->Url->build(['controller' => 'categorylogin', 'action' => 'index', 2]); ?>" class="dropdown-item">Hành động</a>
+												<a href="<?= $this->Url->build(['controller' => 'categorylogin', 'action' => 'index', 3]); ?>" class="dropdown-item">Viễn tưởng</a>
+												<a href="<?= $this->Url->build(['controller' => 'categorylogin', 'action' => 'index', 4]); ?>" class="dropdown-item">Trinh thám</a>
 											</div>
 										</div>
 										<a href="#" class="nav-item nav-link">About</a>
 										<a href="#" class="nav-item nav-link">Contact</a>
 								</div>
 								<div class="navbar-nav ml-auto py-0">
-										<a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'login']); ?>" class="nav-item nav-link">Login</a>
-										<a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'register']); ?>" class="nav-item nav-link">Register</a>
+										<a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'logout']); ?>" class="nav-item nav-link">Logout</a>
 								</div>
 						</div>
 				</nav>

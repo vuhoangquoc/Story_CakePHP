@@ -20,7 +20,6 @@
     <link href="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/css/style.css" rel="stylesheet">
 
     <link href="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/css/doc.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -30,18 +29,12 @@
     <div class="container-fluid mb-5">
 	    <div class="row border-top px-xl-5">
             <div class="col-lg-9">
-               
-                <?= $this->element('nav'); ?>
+                
+                <?= $this->element('navlogin'); ?>
             </div>
         </div>
     </div>
-    <!-- <div class="chuyenchap">
-        <div class="" style="position:fixed;">
-            <?php foreach ($chapters as $chapters) : ?>
-                <a class="btn btn-primary" href="<?= $this->Url->build(['controller'=>'Chapter', 'action'=>'index', $chapters->id]) ?>"><?= $chapters->chap ?></a> 
-            <?php endforeach; ?>
-        </div>
-    </div> -->
+
     <?= $this->fetch('content'); ?>
 
     <?= $this->element('footer'); ?>
@@ -62,16 +55,6 @@
 
     <!-- Template Javascript -->
     <script src="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/js/main.js"></script>
-
-    <script src="http://<?= $_SERVER['SERVER_NAME'] ?>:<?= $_SERVER['SERVER_PORT'] ?>/webdoctruyen/webroot/js/turn.min.js"></script>
-    
-    <script type="text/javascript">
-        $("#flipbook").turn({
-            width: 1000,
-            height: 650,
-            autoCenter: true
-        });
-    </script>
 </body>
 
 </html>

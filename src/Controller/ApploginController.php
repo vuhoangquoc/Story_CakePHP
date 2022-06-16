@@ -28,7 +28,7 @@ use cake\Event\EventInterface;
  *
  * @link https://book.cakephp.org/4/en/controllers.html#the-app-controller
  */
-class AppController extends Controller
+class ApploginController extends Controller
 {
     /**
      * Initialization hook method.
@@ -45,12 +45,12 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        
+        $this->loadComponent('Auth');
 
-        /*
-         * Enable the following component for recommended CakePHP form protection settings.
-         * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
-         */
-        //$this->loadComponent('FormProtection');
+        
+        $this->set('username', $this->Auth->user('username'));
+        $this->set('permission', $this->Auth->user('permission'));
 
     }
 }
